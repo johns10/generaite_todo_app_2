@@ -1,0 +1,17 @@
+[package]
+name = "gen_todo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7.5"
+chrono = "0.4.38"
+clap = "4.5.16"
+sea-orm = "1.0.0"
+sea-orm-migration = "1.0.0"
+serde = "1.0.208"
+tokio = { version = "1.39.3", features = ["full"] }
+uuid = "1.10.0"
+
+[dev-dependencies]
+tokio-test = "0.4.4"
