@@ -47,3 +47,59 @@
 # 2024-08-20 23:21:32.181156
 +Refactor main.rs so that it has a function called initial_message, which returns "Starting Todo App", and that main calls print on that function.
 +Create a main test file that tests the initial_message function from main.rs, and asserts that it returns "Starting Todo App"
+
+# 2024-08-20 23:31:21.932953
++https://doc.rust-lang.org/cargo/reference/config.html https://docs.rs/config/latest/config/ Create a src/config.rs file and implement a Config struct for our Todo application. The configuration system should:
++
++1. Use the `config` crate to manage hierarchical configuration.
++2. Load configuration from the following sources, in order of priority:
++   a. Environment variables (highest priority)
++   b. A config file specific to the current environment (development, test, production)
++   c. A default config file
++
++3. Include the following configuration sections:
++   - Database: connection details (host, port, name, user, password)
++   - Server: host and port
++   - JWT: secret and expiration time
++   - Logging: log level
++   - Rate limiting: requests per duration
++   - Feature flags
++
++4. Use environment variables wherever possible, following the CARGO_* naming convention.
++
++5. Implement a `Config::load()` function that returns a Result<Config, ConfigError>.
++
++6. Follow the code standards outlined in code_standards.md, particularly:
++   - Use strong typing throughout the application
++   - Write clear documentation comments for the Config struct and its methods
++   - Implement proper error handling
++
++7. Ensure the configuration can be easily accessed throughout the application.
++
++8. Add a `version` field to the Config struct and populate it from Cargo.toml.
++
++Here's a skeleton to get you started:
++
++```rust
++use config::{Config as ConfigRs, ConfigError, Environment, File};
++use serde::Deserialize;
++use std::env;
++
++#[derive(Debug, Deserialize)]
++pub struct Config {
++    pub version: String,
++    pub database: DatabaseConfig,
++    pub server: ServerConfig,
++    pub jwt: JwtConfig,
++    pub logging: LoggingConfig,
++    pub rate_limiting: RateLimitingConfig,
++    pub feature_flags: FeatureFlags,
++}
++
++// Implement sub-structs for each configuration section
++
++impl Config {
++    pub fn load() -> Result<Self, ConfigError> {
++        // Implement configuration loading logic here
++    }
++}
