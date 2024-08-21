@@ -1,0 +1,41 @@
+# Rust
+/target
+**/*.rs.bk
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Build output
+/dist
+
+# Dependencies
+/node_modules
+
+# Playwright
+/playwright-report
+/test-results
+
+# Project specific
+.aider.tags*
+playwright
