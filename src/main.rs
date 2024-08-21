@@ -1,3 +1,7 @@
+fn hello_world() -> String {
+    String::from("Hello, World!")
+}
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", hello_world());
 }
