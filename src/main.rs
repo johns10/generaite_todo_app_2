@@ -1,17 +1,12 @@
-fn initial_message() -> String {
-    String::from("Starting Todo App")
-}
+mod cli;
+mod config;
 
-fn main() {
-    println!("{}", initial_message());
-}
+use crate::config::Config;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_initial_message() {
-        assert_eq!(initial_message(), "Starting Todo App");
-    }
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let config = Config::load()?;
+    let cli = cli::build_cli();
+    let matches = cli.get_matches();
+    cli::run_cli(&matches, &config)?;
+    Ok(())
 }

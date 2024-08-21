@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 axum = "0.7.5"
 chrono = "0.4.38"
-clap = "4.5.16"
+clap = { version = "4.5.16", features = ["derive"] }
 config = "0.13.3"
 sea-orm = "1.0.0"
 sea-orm-migration = "1.0.0"

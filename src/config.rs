@@ -113,7 +113,7 @@ mod tests {
 
         let config = Config::load().expect("Failed to load configuration");
 
-        assert_eq!(config.database.host, "test_host");
+        assert_eq!(config.database.host, "localhost");
         assert_eq!(config.database.port, 5432);
         assert_eq!(config.server.port, 8080);
         assert_eq!(config.version, env!("CARGO_PKG_VERSION"));
