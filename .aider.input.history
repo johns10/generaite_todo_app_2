@@ -43,3 +43,7 @@
 
 # 2024-08-20 22:24:19.935447
 +Refactor main.rs so that it has a function called hello_world, which returns "Hello, World!", and that main calls print on that function.
+
+# 2024-08-20 23:21:32.181156
++Refactor main.rs so that it has a function called initial_message, which returns "Starting Todo App", and that main calls print on that function.
++Create a main test file that tests the initial_message function from main.rs, and asserts that it returns "Starting Todo App"
