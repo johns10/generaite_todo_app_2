@@ -32,34 +32,34 @@ pub struct DatabaseConfig {
 }
 
 /// Server configuration.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Default)]
 pub struct ServerConfig {
     pub host: String,
     pub port: u16,
 }
 
 /// JWT configuration.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Default)]
 pub struct JwtConfig {
     pub secret: String,
     pub expiration: u64,
 }
 
 /// Logging configuration.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Default)]
 pub struct LoggingConfig {
     pub level: String,
 }
 
 /// Rate limiting configuration.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Default)]
 pub struct RateLimitingConfig {
     pub requests: u32,
     pub duration: u64,
 }
 
 /// Feature flags.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Default)]
 pub struct FeatureFlags {
     pub enable_registration: bool,
     pub enable_social_login: bool,

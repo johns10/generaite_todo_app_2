@@ -1,6 +1,6 @@
 use crate::config::Config;
 use postgres::{Client, NoTls};
-use log::{info, error};
+use log::info;
 
 /// Creates a new database based on the configuration.
 pub fn create_database(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
