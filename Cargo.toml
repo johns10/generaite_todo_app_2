@@ -13,6 +13,10 @@ sea-orm-migration = "1.0.0"
 serde = { version = "1.0.208", features = ["derive"] }
 tokio = { version = "1.39.3", features = ["full"] }
 uuid = "1.10.0"
+postgres = "0.19.7"
+log = "0.4.20"
+env_logger = "0.10.2"
+anyhow = "1.0.79"
 
 [dev-dependencies]
 tokio-test = "0.4.4"
