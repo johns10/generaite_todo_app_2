@@ -489,3 +489,44 @@
 +For more information about this error, try `rustc --explain E0277`.
 +warning: `gen_todo` (bin "gen_todo" test) generated 1 warning (1 duplicate)
 +error: could not compile `gen_todo` (bin "gen_todo" test) due to 10 previous errors; 1 warning emitted
+
+# 2024-08-20 23:59:43.520573
++/add design/test_strategy.md
+
+# 2024-08-20 23:59:47.144173
++/add "process/code standard guidelines.md"
+
+# 2024-08-21 00:02:11.049155
++
++https://tokio.rs/tokio/topics/testing
++https://www.sea-ql.org/SeaORM/docs/write-test/testing/
++https://www.sea-ql.org/SeaORM/docs/write-test/mock/
++https://www.sea-ql.org/SeaORM/docs/write-test/sqlite/
++
++Create a tests/utils.rs file that provides utility functions for testing our Rust-based To-Do application. This file should follow our code standards and align with our tech stack and architecture. Include the following components:
++
++Database setup and teardown functions:
++Create a function to set up a test database using Sea-ORM, incorporating connection pool management.
++Implement a teardown function to clean up the test database after tests.
++Test app configuration:
++Create a function that returns a configured Axum Router instance for testing.
++Mock data generation:
++Implement functions to create mock Task, User, and Category instances.
++Authentication helpers:
++Create a function to generate authenticated requests for testing protected routes.
++Custom assertions:
++Develop helper functions for common test assertions specific to our application.
++Fixtures:
++Define reusable data structures for tests.
++Ensure that the code follows our strict typing guidelines, uses small functions (aim for under 200 lines), and includes comprehensive documentation comments. Implement error handling using Result types where appropriate.
++
++Use the following test libraries:
++
++tokio for async testing
++sea-orm for database operations
++axum for HTTP-related utilities
++The file should be modular and easily extensible for future testing needs. Include a module-level documentation comment explaining the purpose and usage of the utilities.
++
++Remember to adhere to our code standards, including naming conventions (snake_case for functions, PascalCase for types), and maintain high testability. Use Rust 2021 edition features where applicable.
++
++Please generate the content for the tests/utils.rs file based on these requirements.
