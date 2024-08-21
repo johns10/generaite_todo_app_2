@@ -65,13 +65,11 @@ mod tests {
         // Set some environment variables for testing
         env::set_var("CARGO_DATABASE_HOST", "test_host");
         env::set_var("CARGO_DATABASE_PORT", "5432");
-        env::set_var("CARGO_SERVER_PORT", "8080");
 
         let config = Config::load().expect("Failed to load configuration");
 
         assert_eq!(config.database.host, "localhost");
         assert_eq!(config.database.port, 5432);
-        assert_eq!(config.server.port, 8080);
         assert_eq!(config.version, env!("CARGO_PKG_VERSION"));
     }
 
@@ -86,12 +84,6 @@ mod tests {
                 user: "postgres".to_string(),
                 password: "password".to_string(),
             },
-            // Add other required fields with dummy values
-            server: Default::default(),
-            jwt: Default::default(),
-            logging: Default::default(),
-            rate_limiting: Default::default(),
-            feature_flags: Default::default(),
         };
 
         assert_eq!(config.database.host, "localhost");

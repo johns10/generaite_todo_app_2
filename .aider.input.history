@@ -1258,3 +1258,100 @@
 +133 |         let fixture = TestFixture::new(3);
 +    |                       ^^^^^^^^^^^ use of undeclared type `TestFixture`
 +
+
+# 2024-08-21 00:07:45.517361
++    Checking gen_todo v0.1.0 (/Users/johndavenport/Documents/github/gen_todo)
++    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.08s
++   Compiling gen_todo v0.1.0 (/Users/johndavenport/Documents/github/gen_todo)
++error[E0560]: struct `config::Config` has no field named `server`
++  --> src/cli/db_commands.rs:59:13
++   |
++59 |             server: Default::default(),
++   |             ^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `jwt`
++  --> src/cli/db_commands.rs:60:13
++   |
++60 |             jwt: Default::default(),
++   |             ^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `logging`
++  --> src/cli/db_commands.rs:61:13
++   |
++61 |             logging: Default::default(),
++   |             ^^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `rate_limiting`
++  --> src/cli/db_commands.rs:62:13
++   |
++62 |             rate_limiting: Default::default(),
++   |             ^^^^^^^^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `feature_flags`
++  --> src/cli/db_commands.rs:63:13
++   |
++63 |             feature_flags: Default::default(),
++   |             ^^^^^^^^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0609]: no field `server` on type `config::Config`
++  --> src/config.rs:74:27
++   |
++74 |         assert_eq!(config.server.port, 8080);
++   |                           ^^^^^^ unknown field
++   |
++   = note: available fields are: `version`, `database`
++
++error[E0560]: struct `config::Config` has no field named `server`
++  --> src/config.rs:90:13
++   |
++90 |             server: Default::default(),
++   |             ^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `jwt`
++  --> src/config.rs:91:13
++   |
++91 |             jwt: Default::default(),
++   |             ^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `logging`
++  --> src/config.rs:92:13
++   |
++92 |             logging: Default::default(),
++   |             ^^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `rate_limiting`
++  --> src/config.rs:93:13
++   |
++93 |             rate_limiting: Default::default(),
++   |             ^^^^^^^^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++error[E0560]: struct `config::Config` has no field named `feature_flags`
++  --> src/config.rs:94:13
++   |
++94 |             feature_flags: Default::default(),
++   |             ^^^^^^^^^^^^^ `config::Config` does not have this field
++   |
++   = note: all struct fields are already assigned
++
++Some errors have detailed explanations: E0560, E0609.
++For more information about an error, try `rustc --explain E0560`.
++error: could not compile `gen_todo` (bin "gen_todo" test) due to 11 previous errors
++warning: build failed, waiting for other jobs to finish...

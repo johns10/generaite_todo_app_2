@@ -55,12 +55,6 @@ mod tests {
                 user: "postgres".to_string(),
                 password: "password".to_string(),
             },
-            // Add other required fields with dummy values
-            server: Default::default(),
-            jwt: Default::default(),
-            logging: Default::default(),
-            rate_limiting: Default::default(),
-            feature_flags: Default::default(),
         };
 
         // Run the create_database function
