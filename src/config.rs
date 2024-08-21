@@ -9,16 +9,6 @@ pub struct Config {
     pub version: String,
     /// Database configuration.
     pub database: DatabaseConfig,
-    /// Server configuration.
-    pub server: ServerConfig,
-    /// JWT configuration.
-    pub jwt: JwtConfig,
-    /// Logging configuration.
-    pub logging: LoggingConfig,
-    /// Rate limiting configuration.
-    pub rate_limiting: RateLimitingConfig,
-    /// Feature flags.
-    pub feature_flags: FeatureFlags,
 }
 
 /// Database configuration.
@@ -29,40 +19,6 @@ pub struct DatabaseConfig {
     pub name: String,
     pub user: String,
     pub password: String,
-}
-
-/// Server configuration.
-#[derive(Debug, Deserialize, Default)]
-pub struct ServerConfig {
-    pub host: String,
-    pub port: u16,
-}
-
-/// JWT configuration.
-#[derive(Debug, Deserialize, Default)]
-pub struct JwtConfig {
-    pub secret: String,
-    pub expiration: u64,
-}
-
-/// Logging configuration.
-#[derive(Debug, Deserialize, Default)]
-pub struct LoggingConfig {
-    pub level: String,
-}
-
-/// Rate limiting configuration.
-#[derive(Debug, Deserialize, Default)]
-pub struct RateLimitingConfig {
-    pub requests: u32,
-    pub duration: u64,
-}
-
-/// Feature flags.
-#[derive(Debug, Deserialize, Default)]
-pub struct FeatureFlags {
-    pub enable_registration: bool,
-    pub enable_social_login: bool,
 }
 
 impl Config {
