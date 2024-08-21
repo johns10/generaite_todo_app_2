@@ -1,0 +1,42 @@
+
+# 2024-08-20 22:19:46.308622
++Based on the project's architecture, tech stack, and configuration requirements outlined in the design documents, create a .env.example file with placeholders for all relevant variables. Include variables for the following categories:
++
++Environment specification (development, test, production)
++Database configuration:
++
++Host, port, name, user, password for PostgreSQL
++Connection pool size for production
++
++
++Server configuration:
++
++Host and port
++
++
++JWT configuration:
++
++Secret and expiration time
++
++
++Logging configuration:
++
++Log level for different environments
++
++
++Rate limiting settings:
++
++Number of requests and duration
++
++
++Frontend URL
++Feature flags:
++
++enable_feature_x
++
++
++Sentry DSN for production error tracking
++
++Ensure that the .env.example file covers all necessary configurations for development, test, and production environments. Use descriptive variable names and provide comments for each variable to explain its purpose. Include any additional environment variables that might be required based on the project's dependencies listed in the Cargo.toml file.
++Format the .env.example file with clear sections for each category of configuration, and use placeholder values that indicate the expected format or range of values for each variable."
++This prompt covers the main aspects of the project's configuration needs based on the information available in the design documents and Cargo.toml file. It ensures that the resulting .env.example file will be comprehensive and adaptable to different environments.
