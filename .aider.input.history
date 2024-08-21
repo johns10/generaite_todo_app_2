@@ -530,3 +530,731 @@
 +Remember to adhere to our code standards, including naming conventions (snake_case for functions, PascalCase for types), and maintain high testability. Use Rust 2021 edition features where applicable.
 +
 +Please generate the content for the tests/utils.rs file based on these requirements.
+
+# 2024-08-21 00:05:29.149943
++    Checking gen_todo v0.1.0 (/Users/johndavenport/Documents/github/gen_todo)
++warning: fields `server`, `jwt`, `logging`, `rate_limiting`, and `feature_flags` are never read
++  --> src/config.rs:13:9
++   |
++7  | pub struct Config {
++   |            ------ fields in this struct
++...
++13 |     pub server: ServerConfig,
++   |         ^^^^^^
++14 |     /// JWT configuration.
++15 |     pub jwt: JwtConfig,
++   |         ^^^
++16 |     /// Logging configuration.
++17 |     pub logging: LoggingConfig,
++   |         ^^^^^^^
++18 |     /// Rate limiting configuration.
++19 |     pub rate_limiting: RateLimitingConfig,
++   |         ^^^^^^^^^^^^^
++20 |     /// Feature flags.
++21 |     pub feature_flags: FeatureFlags,
++   |         ^^^^^^^^^^^^^
++   |
++   = note: `Config` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++   = note: `#[warn(dead_code)]` on by default
++
++warning: fields `host` and `port` are never read
++  --> src/config.rs:37:9
++   |
++36 | pub struct ServerConfig {
++   |            ------------ fields in this struct
++37 |     pub host: String,
++   |         ^^^^
++38 |     pub port: u16,
++   |         ^^^^
++   |
++   = note: `ServerConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `secret` and `expiration` are never read
++  --> src/config.rs:44:9
++   |
++43 | pub struct JwtConfig {
++   |            --------- fields in this struct
++44 |     pub secret: String,
++   |         ^^^^^^
++45 |     pub expiration: u64,
++   |         ^^^^^^^^^^
++   |
++   = note: `JwtConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: field `level` is never read
++  --> src/config.rs:51:9
++   |
++50 | pub struct LoggingConfig {
++   |            ------------- field in this struct
++51 |     pub level: String,
++   |         ^^^^^
++   |
++   = note: `LoggingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `requests` and `duration` are never read
++  --> src/config.rs:57:9
++   |
++56 | pub struct RateLimitingConfig {
++   |            ------------------ fields in this struct
++57 |     pub requests: u32,
++   |         ^^^^^^^^
++58 |     pub duration: u64,
++   |         ^^^^^^^^
++   |
++   = note: `RateLimitingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `enable_registration` and `enable_social_login` are never read
++  --> src/config.rs:64:9
++   |
++63 | pub struct FeatureFlags {
++   |            ------------ fields in this struct
++64 |     pub enable_registration: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++65 |     pub enable_social_login: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++   |
++   = note: `FeatureFlags` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: `gen_todo` (bin "gen_todo") generated 6 warnings
++    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.91s
++   Compiling gen_todo v0.1.0 (/Users/johndavenport/Documents/github/gen_todo)
++warning: fields `server`, `jwt`, `logging`, `rate_limiting`, and `feature_flags` are never read
++  --> src/config.rs:13:9
++   |
++7  | pub struct Config {
++   |            ------ fields in this struct
++...
++13 |     pub server: ServerConfig,
++   |         ^^^^^^
++14 |     /// JWT configuration.
++15 |     pub jwt: JwtConfig,
++   |         ^^^
++16 |     /// Logging configuration.
++17 |     pub logging: LoggingConfig,
++   |         ^^^^^^^
++18 |     /// Rate limiting configuration.
++19 |     pub rate_limiting: RateLimitingConfig,
++   |         ^^^^^^^^^^^^^
++20 |     /// Feature flags.
++21 |     pub feature_flags: FeatureFlags,
++   |         ^^^^^^^^^^^^^
++   |
++   = note: `Config` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++   = note: `#[warn(dead_code)]` on by default
++
++warning: fields `host` and `port` are never read
++  --> src/config.rs:37:9
++   |
++36 | pub struct ServerConfig {
++   |            ------------ fields in this struct
++37 |     pub host: String,
++   |         ^^^^
++38 |     pub port: u16,
++   |         ^^^^
++   |
++   = note: `ServerConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `secret` and `expiration` are never read
++  --> src/config.rs:44:9
++   |
++43 | pub struct JwtConfig {
++   |            --------- fields in this struct
++44 |     pub secret: String,
++   |         ^^^^^^
++45 |     pub expiration: u64,
++   |         ^^^^^^^^^^
++   |
++   = note: `JwtConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: field `level` is never read
++  --> src/config.rs:51:9
++   |
++50 | pub struct LoggingConfig {
++   |            ------------- field in this struct
++51 |     pub level: String,
++   |         ^^^^^
++   |
++   = note: `LoggingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `requests` and `duration` are never read
++  --> src/config.rs:57:9
++   |
++56 | pub struct RateLimitingConfig {
++   |            ------------------ fields in this struct
++57 |     pub requests: u32,
++   |         ^^^^^^^^
++58 |     pub duration: u64,
++   |         ^^^^^^^^
++   |
++   = note: `RateLimitingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `enable_registration` and `enable_social_login` are never read
++  --> src/config.rs:64:9
++   |
++63 | pub struct FeatureFlags {
++   |            ------------ fields in this struct
++64 |     pub enable_registration: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++65 |     pub enable_social_login: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++   |
++   = note: `FeatureFlags` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `jwt`, `logging`, `rate_limiting`, and `feature_flags` are never read
++  --> src/config.rs:15:9
++   |
++7  | pub struct Config {
++   |            ------ fields in this struct
++...
++15 |     pub jwt: JwtConfig,
++   |         ^^^
++16 |     /// Logging configuration.
++17 |     pub logging: LoggingConfig,
++   |         ^^^^^^^
++18 |     /// Rate limiting configuration.
++19 |     pub rate_limiting: RateLimitingConfig,
++   |         ^^^^^^^^^^^^^
++20 |     /// Feature flags.
++21 |     pub feature_flags: FeatureFlags,
++   |         ^^^^^^^^^^^^^
++   |
++   = note: `Config` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++   = note: `#[warn(dead_code)]` on by default
++
++warning: field `host` is never read
++  --> src/config.rs:37:9
++   |
++36 | pub struct ServerConfig {
++   |            ------------ field in this struct
++37 |     pub host: String,
++   |         ^^^^
++   |
++   = note: `ServerConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++error[E0432]: unresolved imports `sea_orm::MockDatabase`, `sea_orm::MockExecResult`, `sea_orm::Transaction`
++  --> tests/utils.rs:15:48
++   |
++15 |     Database, DatabaseConnection, EntityTrait, MockDatabase, MockExecResult, Transaction,
++   |                                                ^^^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^ no `Transaction` in the root
++   |                                                |             |
++   |                                                |             no `MockExecResult` in the root
++   |                                                no `MockDatabase` in the root
++   |
++   = help: consider importing one of these items instead:
++           postgres::Transaction
++           sea_orm::TransactionError::Transaction
++           sea_orm_migration::SchemaManagerConnection::Transaction
++help: a similar name exists in the module
++   |
++15 |     Database, DatabaseConnection, EntityTrait, Database, MockExecResult, Transaction,
++   |                                                ~~~~~~~~
++help: a similar name exists in the module
++   |
++15 |     Database, DatabaseConnection, EntityTrait, MockDatabase, ExecResult, Transaction,
++   |                                                              ~~~~~~~~~~
++
++error[E0432]: unresolved import `serde_json`
++  --> tests/utils.rs:17:5
++   |
++17 | use serde_json::json;
++   |     ^^^^^^^^^^ use of undeclared crate or module `serde_json`
++
++error[E0432]: unresolved import `crate::config`
++  --> tests/utils.rs:22:12
++   |
++22 | use crate::config::Config;
++   |            ^^^^^^
++   |            |
++   |            unresolved import
++   |            help: a similar path exists: `postgres::config`
++
++error[E0432]: unresolved import `crate::models`
++  --> tests/utils.rs:23:12
++   |
++23 | use crate::models::{category, task, user};
++   |            ^^^^^^ could not find `models` in the crate root
++
++error[E0433]: failed to resolve: use of undeclared crate or module `hyper`
++   --> tests/utils.rs:166:16
++    |
++166 |     let body = hyper::body::to_bytes(response.into_body()).await?;
++    |                ^^^^^ use of undeclared crate or module `hyper`
++    |
++help: consider importing this module
++    |
++8   + use axum::body;
++    |
++help: if you import `body`, refer to it directly
++    |
++166 -     let body = hyper::body::to_bytes(response.into_body()).await?;
++166 +     let body = body::to_bytes(response.into_body()).await?;
++    |
++
++warning: unused import: `extract::State`
++  --> tests/utils.rs:10:5
++   |
++10 |     extract::State,
++   |     ^^^^^^^^^^^^^^
++   |
++   = note: `#[warn(unused_imports)]` on by default
++
++warning: unused import: `EntityTrait`
++  --> tests/utils.rs:15:35
++   |
++15 |     Database, DatabaseConnection, EntityTrait, MockDatabase, MockExecResult, Transaction,
++   |                                   ^^^^^^^^^^^
++
++error[E0433]: failed to resolve: use of undeclared crate or module `serde_json`
++   --> tests/utils.rs:167:35
++    |
++167 |     let body: serde_json::Value = serde_json::from_slice(&body)?;
++    |                                   ^^^^^^^^^^ use of undeclared crate or module `serde_json`
++
++error[E0599]: no function or associated item named `new_v4` found for struct `uuid::Uuid` in the current scope
++   --> tests/utils.rs:77:19
++    |
++77  |         id: Uuid::new_v4(),
++    |                   ^^^^^^ function or associated item not found in `uuid::Uuid`
++    |
++note: if you're trying to build a new `uuid::Uuid` consider using one of the following associated functions:
++      uuid::builder::<impl uuid::Uuid>::nil
++      uuid::builder::<impl uuid::Uuid>::max
++      uuid::builder::<impl uuid::Uuid>::from_fields
++      uuid::builder::<impl uuid::Uuid>::from_fields_le
++      and 10 others
++   --> /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.10.0/src/builder.rs:72:5
++    |
++72  |     pub const fn nil() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++98  |     pub const fn max() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++122 |     pub const fn from_fields(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++168 |     pub const fn from_fields_le(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++error[E0599]: no function or associated item named `new_v4` found for struct `uuid::Uuid` in the current scope
++   --> tests/utils.rs:84:24
++    |
++84  |         user_id: Uuid::new_v4(),
++    |                        ^^^^^^ function or associated item not found in `uuid::Uuid`
++    |
++note: if you're trying to build a new `uuid::Uuid` consider using one of the following associated functions:
++      uuid::builder::<impl uuid::Uuid>::nil
++      uuid::builder::<impl uuid::Uuid>::max
++      uuid::builder::<impl uuid::Uuid>::from_fields
++      uuid::builder::<impl uuid::Uuid>::from_fields_le
++      and 10 others
++   --> /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.10.0/src/builder.rs:72:5
++    |
++72  |     pub const fn nil() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++98  |     pub const fn max() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++122 |     pub const fn from_fields(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++168 |     pub const fn from_fields_le(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++error[E0599]: no function or associated item named `new_v4` found for struct `uuid::Uuid` in the current scope
++   --> tests/utils.rs:85:33
++    |
++85  |         category_id: Some(Uuid::new_v4()),
++    |                                 ^^^^^^ function or associated item not found in `uuid::Uuid`
++    |
++note: if you're trying to build a new `uuid::Uuid` consider using one of the following associated functions:
++      uuid::builder::<impl uuid::Uuid>::nil
++      uuid::builder::<impl uuid::Uuid>::max
++      uuid::builder::<impl uuid::Uuid>::from_fields
++      uuid::builder::<impl uuid::Uuid>::from_fields_le
++      and 10 others
++   --> /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.10.0/src/builder.rs:72:5
++    |
++72  |     pub const fn nil() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++98  |     pub const fn max() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++122 |     pub const fn from_fields(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++168 |     pub const fn from_fields_le(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++error[E0599]: no function or associated item named `new_v4` found for struct `uuid::Uuid` in the current scope
++   --> tests/utils.rs:96:19
++    |
++96  |         id: Uuid::new_v4(),
++    |                   ^^^^^^ function or associated item not found in `uuid::Uuid`
++    |
++note: if you're trying to build a new `uuid::Uuid` consider using one of the following associated functions:
++      uuid::builder::<impl uuid::Uuid>::nil
++      uuid::builder::<impl uuid::Uuid>::max
++      uuid::builder::<impl uuid::Uuid>::from_fields
++      uuid::builder::<impl uuid::Uuid>::from_fields_le
++      and 10 others
++   --> /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.10.0/src/builder.rs:72:5
++    |
++72  |     pub const fn nil() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++98  |     pub const fn max() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++122 |     pub const fn from_fields(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++168 |     pub const fn from_fields_le(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++error[E0599]: no function or associated item named `new_v4` found for struct `uuid::Uuid` in the current scope
++   --> tests/utils.rs:112:19
++    |
++112 |         id: Uuid::new_v4(),
++    |                   ^^^^^^ function or associated item not found in `uuid::Uuid`
++    |
++note: if you're trying to build a new `uuid::Uuid` consider using one of the following associated functions:
++      uuid::builder::<impl uuid::Uuid>::nil
++      uuid::builder::<impl uuid::Uuid>::max
++      uuid::builder::<impl uuid::Uuid>::from_fields
++      uuid::builder::<impl uuid::Uuid>::from_fields_le
++      and 10 others
++   --> /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.10.0/src/builder.rs:72:5
++    |
++72  |     pub const fn nil() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++98  |     pub const fn max() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++122 |     pub const fn from_fields(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++168 |     pub const fn from_fields_le(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++error[E0599]: no function or associated item named `new_v4` found for struct `uuid::Uuid` in the current scope
++   --> tests/utils.rs:117:24
++    |
++117 |         user_id: Uuid::new_v4(),
++    |                        ^^^^^^ function or associated item not found in `uuid::Uuid`
++    |
++note: if you're trying to build a new `uuid::Uuid` consider using one of the following associated functions:
++      uuid::builder::<impl uuid::Uuid>::nil
++      uuid::builder::<impl uuid::Uuid>::max
++      uuid::builder::<impl uuid::Uuid>::from_fields
++      uuid::builder::<impl uuid::Uuid>::from_fields_le
++      and 10 others
++   --> /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.10.0/src/builder.rs:72:5
++    |
++72  |     pub const fn nil() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++98  |     pub const fn max() -> Self {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++122 |     pub const fn from_fields(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++...
++168 |     pub const fn from_fields_le(d1: u32, d2: u16, d3: u16, d4: &[u8; 8]) -> Uuid {
++    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++error[E0433]: failed to resolve: use of undeclared crate or module `serde_json`
++   --> tests/utils.rs:136:11
++    |
++136 |     body: serde_json::Value,
++    |           ^^^^^^^^^^ use of undeclared crate or module `serde_json`
++
++error[E0433]: failed to resolve: use of undeclared crate or module `serde_json`
++   --> tests/utils.rs:162:20
++    |
++162 |     expected_body: serde_json::Value,
++    |                    ^^^^^^^^^^ use of undeclared crate or module `serde_json`
++
++error[E0433]: failed to resolve: use of undeclared crate or module `serde_json`
++   --> tests/utils.rs:167:15
++    |
++167 |     let body: serde_json::Value = serde_json::from_slice(&body)?;
++    |               ^^^^^^^^^^ use of undeclared crate or module `serde_json`
++
++Some errors have detailed explanations: E0432, E0433, E0599.
++For more information about an error, try `rustc --explain E0432`.
++warning: `gen_todo` (test "utils") generated 2 warnings
++error: could not compile `gen_todo` (test "utils") due to 15 previous errors; 2 warnings emitted
++warning: build failed, waiting for other jobs to finish...
++warning: `gen_todo` (bin "gen_todo" test) generated 6 warnings (4 duplicates)
++warning: `gen_todo` (bin "gen_todo") generated 6 warnings
+
+# 2024-08-21 00:06:37.580633
++warning: fields `server`, `jwt`, `logging`, `rate_limiting`, and `feature_flags` are never read
++  --> src/config.rs:13:9
++   |
++7  | pub struct Config {
++   |            ------ fields in this struct
++...
++13 |     pub server: ServerConfig,
++   |         ^^^^^^
++14 |     /// JWT configuration.
++15 |     pub jwt: JwtConfig,
++   |         ^^^
++16 |     /// Logging configuration.
++17 |     pub logging: LoggingConfig,
++   |         ^^^^^^^
++18 |     /// Rate limiting configuration.
++19 |     pub rate_limiting: RateLimitingConfig,
++   |         ^^^^^^^^^^^^^
++20 |     /// Feature flags.
++21 |     pub feature_flags: FeatureFlags,
++   |         ^^^^^^^^^^^^^
++   |
++   = note: `Config` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++   = note: `#[warn(dead_code)]` on by default
++
++warning: fields `host` and `port` are never read
++  --> src/config.rs:37:9
++   |
++36 | pub struct ServerConfig {
++   |            ------------ fields in this struct
++37 |     pub host: String,
++   |         ^^^^
++38 |     pub port: u16,
++   |         ^^^^
++   |
++   = note: `ServerConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `secret` and `expiration` are never read
++  --> src/config.rs:44:9
++   |
++43 | pub struct JwtConfig {
++   |            --------- fields in this struct
++44 |     pub secret: String,
++   |         ^^^^^^
++45 |     pub expiration: u64,
++   |         ^^^^^^^^^^
++   |
++   = note: `JwtConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: field `level` is never read
++  --> src/config.rs:51:9
++   |
++50 | pub struct LoggingConfig {
++   |            ------------- field in this struct
++51 |     pub level: String,
++   |         ^^^^^
++   |
++   = note: `LoggingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `requests` and `duration` are never read
++  --> src/config.rs:57:9
++   |
++56 | pub struct RateLimitingConfig {
++   |            ------------------ fields in this struct
++57 |     pub requests: u32,
++   |         ^^^^^^^^
++58 |     pub duration: u64,
++   |         ^^^^^^^^
++   |
++   = note: `RateLimitingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `enable_registration` and `enable_social_login` are never read
++  --> src/config.rs:64:9
++   |
++63 | pub struct FeatureFlags {
++   |            ------------ fields in this struct
++64 |     pub enable_registration: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++65 |     pub enable_social_login: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++   |
++   = note: `FeatureFlags` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: `gen_todo` (bin "gen_todo") generated 6 warnings
++    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.19s
++   Compiling gen_todo v0.1.0 (/Users/johndavenport/Documents/github/gen_todo)
++warning: fields `jwt`, `logging`, `rate_limiting`, and `feature_flags` are never read
++  --> src/config.rs:15:9
++   |
++7  | pub struct Config {
++   |            ------ fields in this struct
++...
++15 |     pub jwt: JwtConfig,
++   |         ^^^
++16 |     /// Logging configuration.
++17 |     pub logging: LoggingConfig,
++   |         ^^^^^^^
++18 |     /// Rate limiting configuration.
++19 |     pub rate_limiting: RateLimitingConfig,
++   |         ^^^^^^^^^^^^^
++20 |     /// Feature flags.
++21 |     pub feature_flags: FeatureFlags,
++   |         ^^^^^^^^^^^^^
++   |
++   = note: `Config` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++   = note: `#[warn(dead_code)]` on by default
++
++warning: field `host` is never read
++  --> src/config.rs:37:9
++   |
++36 | pub struct ServerConfig {
++   |            ------------ field in this struct
++37 |     pub host: String,
++   |         ^^^^
++   |
++   = note: `ServerConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `secret` and `expiration` are never read
++  --> src/config.rs:44:9
++   |
++43 | pub struct JwtConfig {
++   |            --------- fields in this struct
++44 |     pub secret: String,
++   |         ^^^^^^
++45 |     pub expiration: u64,
++   |         ^^^^^^^^^^
++   |
++   = note: `JwtConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: field `level` is never read
++  --> src/config.rs:51:9
++   |
++50 | pub struct LoggingConfig {
++   |            ------------- field in this struct
++51 |     pub level: String,
++   |         ^^^^^
++   |
++   = note: `LoggingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `requests` and `duration` are never read
++  --> src/config.rs:57:9
++   |
++56 | pub struct RateLimitingConfig {
++   |            ------------------ fields in this struct
++57 |     pub requests: u32,
++   |         ^^^^^^^^
++58 |     pub duration: u64,
++   |         ^^^^^^^^
++   |
++   = note: `RateLimitingConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `enable_registration` and `enable_social_login` are never read
++  --> src/config.rs:64:9
++   |
++63 | pub struct FeatureFlags {
++   |            ------------ fields in this struct
++64 |     pub enable_registration: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++65 |     pub enable_social_login: bool,
++   |         ^^^^^^^^^^^^^^^^^^^
++   |
++   = note: `FeatureFlags` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: fields `server`, `jwt`, `logging`, `rate_limiting`, and `feature_flags` are never read
++  --> src/config.rs:13:9
++   |
++7  | pub struct Config {
++   |            ------ fields in this struct
++...
++13 |     pub server: ServerConfig,
++   |         ^^^^^^
++14 |     /// JWT configuration.
++15 |     pub jwt: JwtConfig,
++   |         ^^^
++16 |     /// Logging configuration.
++17 |     pub logging: LoggingConfig,
++   |         ^^^^^^^
++18 |     /// Rate limiting configuration.
++19 |     pub rate_limiting: RateLimitingConfig,
++   |         ^^^^^^^^^^^^^
++20 |     /// Feature flags.
++21 |     pub feature_flags: FeatureFlags,
++   |         ^^^^^^^^^^^^^
++   |
++   = note: `Config` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++   = note: `#[warn(dead_code)]` on by default
++
++warning: fields `host` and `port` are never read
++  --> src/config.rs:37:9
++   |
++36 | pub struct ServerConfig {
++   |            ------------ fields in this struct
++37 |     pub host: String,
++   |         ^^^^
++38 |     pub port: u16,
++   |         ^^^^
++   |
++   = note: `ServerConfig` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
++
++warning: `gen_todo` (bin "gen_todo" test) generated 6 warnings
++warning: `gen_todo` (bin "gen_todo") generated 6 warnings (4 duplicates)
++error: cannot find macro `json` in this scope
++   --> tests/utils.rs:119:13
++    |
++119 |             json!({"title": "Test Task"}),
++    |             ^^^^
++
++error[E0433]: failed to resolve: use of undeclared type `Config`
++  --> tests/utils.rs:58:18
++   |
++58 |     let config = Config::load().expect("Failed to load config");
++   |                  ^^^^^^ use of undeclared type `Config`
++   |
++help: consider importing one of these items
++   |
++8  + use config::Config;
++   |
++8  + use postgres::Config;
++   |
++
++warning: unused imports: `Request`, `StatusCode`, and `body::Body`
++  --> tests/utils.rs:9:5
++   |
++9  |     body::Body,
++   |     ^^^^^^^^^^
++10 |     http::{Request, StatusCode},
++   |            ^^^^^^^  ^^^^^^^^^^
++   |
++   = note: `#[warn(unused_imports)]` on by default
++
++warning: unused import: `uuid::Uuid`
++  --> tests/utils.rs:16:5
++   |
++16 | use uuid::Uuid;
++   |     ^^^^^^^^^^
++
++error[E0425]: cannot find function `mock_task` in this scope
++   --> tests/utils.rs:105:20
++    |
++105 |         let task = mock_task();
++    |                    ^^^^^^^^^ not found in this scope
++
++error[E0425]: cannot find function `mock_user` in this scope
++   --> tests/utils.rs:106:20
++    |
++106 |         let user = mock_user();
++    |                    ^^^^^^^^^ not found in this scope
++
++error[E0425]: cannot find function `mock_category` in this scope
++   --> tests/utils.rs:107:24
++    |
++107 |         let category = mock_category();
++    |                        ^^^^^^^^^^^^^ not found in this scope
++
++error[E0425]: cannot find function `authenticated_request` in this scope
++   --> tests/utils.rs:116:19
++    |
++116 |         let req = authenticated_request(
++    |                   ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
++
++error[E0433]: failed to resolve: use of undeclared type `TestFixture`
++   --> tests/utils.rs:133:23
++    |
++133 |         let fixture = TestFixture::new(3);
++    |                       ^^^^^^^^^^^ use of undeclared type `TestFixture`
++
