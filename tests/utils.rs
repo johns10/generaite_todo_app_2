@@ -16,7 +16,7 @@ use tokio::sync::Mutex;
 ///
 /// A `Result` containing the `DatabaseConnection` if successful, or an error if setup fails.
 pub async fn setup_test_db() -> Result<DatabaseConnection, Box<dyn std::error::Error>> {
-    let db_url = "sqlite::memory:".to_string();
+    let db_url = "postgres://postgres:password@localhost:5432/test_db".to_string();
     let db = Database::connect(db_url).await?;
     
     // Run migrations or create tables as needed

@@ -1355,3 +1355,103 @@
 +For more information about an error, try `rustc --explain E0560`.
 +error: could not compile `gen_todo` (bin "gen_todo" test) due to 11 previous errors
 +warning: build failed, waiting for other jobs to finish...
+
+# 2024-08-21 00:10:14.874921
++    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.21s
++    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.20s
++     Running unittests src/main.rs (target/debug/deps/gen_todo-16cb12f5d1a01bde)
++
++running 3 tests
++test config::tests::test_database_config ... ok
++test config::tests::test_load_config ... ok
++test cli::db_commands::tests::test_create_database ... ok
++
++test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
++
++     Running tests/main_test.rs (target/debug/deps/main_test-2bdd62bdd5672ac1)
++
++running 1 test
++test test_cli_version ... ok
++
++test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.58s
++
++     Running tests/utils.rs (target/debug/deps/utils-0700d906d7356f31)
++
++running 1 test
++test tests::test_setup_and_teardown_db ... FAILED
++
++failures:
++
++---- tests::test_setup_and_teardown_db stdout ----
++thread 'tests::test_setup_and_teardown_db' panicked at tests/utils.rs:89:40:
++Failed to set up test DB: Conn(Internal("The connection string 'sqlite::memory:' has no supporting driver."))
++stack backtrace:
++   0: rust_begin_unwind
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/std/src/panicking.rs:652:5
++   1: core::panicking::panic_fmt
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/panicking.rs:72:14
++   2: core::result::unwrap_failed
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/result.rs:1679:5
++   3: core::result::Result<T,E>::expect
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/result.rs:1059:23
++   4: utils::tests::test_setup_and_teardown_db::{{closure}}
++             at ./tests/utils.rs:89:18
++   5: <core::pin::Pin<P> as core::future::future::Future>::poll
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/future/future.rs:123:9
++   6: <core::pin::Pin<P> as core::future::future::Future>::poll
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/future/future.rs:123:9
++   7: tokio::runtime::scheduler::current_thread::CoreGuard::block_on::{{closure}}::{{closure}}::{{closure}}
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:673:57
++   8: tokio::runtime::coop::with_budget
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/coop.rs:107:5
++   9: tokio::runtime::coop::budget
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/coop.rs:73:5
++  10: tokio::runtime::scheduler::current_thread::CoreGuard::block_on::{{closure}}::{{closure}}
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:673:25
++  11: tokio::runtime::scheduler::current_thread::Context::enter
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:412:19
++  12: tokio::runtime::scheduler::current_thread::CoreGuard::block_on::{{closure}}
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:672:36
++  13: tokio::runtime::scheduler::current_thread::CoreGuard::enter::{{closure}}
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:751:68
++  14: tokio::runtime::context::scoped::Scoped<T>::set
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/context/scoped.rs:40:9
++  15: tokio::runtime::context::set_scheduler::{{closure}}
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/context.rs:180:26
++  16: std::thread::local::LocalKey<T>::try_with
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/std/src/thread/local.rs:283:12
++  17: std::thread::local::LocalKey<T>::with
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/std/src/thread/local.rs:260:9
++  18: tokio::runtime::context::set_scheduler
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/context.rs:180:9
++  19: tokio::runtime::scheduler::current_thread::CoreGuard::enter
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:751:27
++  20: tokio::runtime::scheduler::current_thread::CoreGuard::block_on
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:660:19
++  21: tokio::runtime::scheduler::current_thread::CurrentThread::block_on::{{closure}}
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:180:28
++  22: tokio::runtime::context::runtime::enter_runtime
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/context/runtime.rs:65:16
++  23: tokio::runtime::scheduler::current_thread::CurrentThread::block_on
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/scheduler/current_thread/mod.rs:168:9
++  24: tokio::runtime::runtime::Runtime::block_on_inner
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/runtime.rs:361:47
++  25: tokio::runtime::runtime::Runtime::block_on
++             at /Users/johndavenport/.cargo/registry/src/index.crates.io-6f17d22bba15001f/tokio-1.39.3/src/runtime/runtime.rs:335:13
++  26: utils::tests::test_setup_and_teardown_db
++             at ./tests/utils.rs:90:9
++  27: utils::tests::test_setup_and_teardown_db::{{closure}}
++             at ./tests/utils.rs:88:42
++  28: core::ops::function::FnOnce::call_once
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/ops/function.rs:250:5
++  29: core::ops::function::FnOnce::call_once
++             at /rustc/3f5fd8dd41153bc5fdca9427e9e05be2c767ba23/library/core/src/ops/function.rs:250:5
++note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
++
++
++failures:
++    tests::test_setup_and_teardown_db
++
++test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
++
++error: test failed, to rerun pass `--test utils`

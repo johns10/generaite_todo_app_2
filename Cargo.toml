@@ -8,7 +8,7 @@ axum = "0.7.5"
 chrono = "0.4.38"
 clap = { version = "4.5.16", features = ["derive"] }
 config = "0.13.3"
-sea-orm = "1.0.0"
+sea-orm = { version = "1.0.0", features = ["runtime-tokio-native-tls", "sqlx-postgres"] }
 sea-orm-migration = "1.0.0"
 serde = { version = "1.0.208", features = ["derive"] }
 tokio = { version = "1.39.3", features = ["full"] }
