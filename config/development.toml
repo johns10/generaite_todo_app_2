@@ -1,0 +1,9 @@
+[database]
+name = "todo_app_dev"
+
+[logging]
+level = "debug"
+
+[feature_flags]
+enable_registration = true
+enable_social_login = true

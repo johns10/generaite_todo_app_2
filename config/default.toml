@@ -1,0 +1,25 @@
+[database]
+host = "localhost"
+port = 5432
+name = "todo_app"
+user = "postgres"
+password = "password"
+
+[server]
+host = "127.0.0.1"
+port = 8080
+
+[jwt]
+secret = "default_secret_change_me"
+expiration = 3600
+
+[logging]
+level = "info"
+
+[rate_limiting]
+requests = 100
+duration = 60
+
+[feature_flags]
+enable_registration = true
+enable_social_login = false

@@ -1,0 +1,13 @@
+[database]
+name = "todo_app_test"
+
+[logging]
+level = "debug"
+
+[rate_limiting]
+requests = 1000
+duration = 60
+
+[feature_flags]
+enable_registration = true
+enable_social_login = true

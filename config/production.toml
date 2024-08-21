@@ -1,0 +1,22 @@
+[database]
+host = "production_db_host"
+name = "todo_app_prod"
+user = "prod_user"
+password = "prod_password"
+
+[server]
+host = "0.0.0.0"
+
+[jwt]
+secret = "production_secret_change_me"
+
+[logging]
+level = "warn"
+
+[rate_limiting]
+requests = 50
+duration = 60
+
+[feature_flags]
+enable_registration = false
+enable_social_login = true
