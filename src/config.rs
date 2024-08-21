@@ -118,4 +118,30 @@ mod tests {
         assert_eq!(config.server.port, 8080);
         assert_eq!(config.version, env!("CARGO_PKG_VERSION"));
     }
+
+    #[test]
+    fn test_database_config() {
+        let config = Config {
+            version: "1.0.0".to_string(),
+            database: DatabaseConfig {
+                host: "localhost".to_string(),
+                port: 5432,
+                name: "test_db".to_string(),
+                user: "postgres".to_string(),
+                password: "password".to_string(),
+            },
+            // Add other required fields with dummy values
+            server: Default::default(),
+            jwt: Default::default(),
+            logging: Default::default(),
+            rate_limiting: Default::default(),
+            feature_flags: Default::default(),
+        };
+
+        assert_eq!(config.database.host, "localhost");
+        assert_eq!(config.database.port, 5432);
+        assert_eq!(config.database.name, "test_db");
+        assert_eq!(config.database.user, "postgres");
+        assert_eq!(config.database.password, "password");
+    }
 }
