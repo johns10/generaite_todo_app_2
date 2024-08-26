@@ -54,6 +54,8 @@ mod tests {
                 name: "test_db".to_string(),
                 user: "postgres".to_string(),
                 password: "password".to_string(),
+                connection_timeout: std::time::Duration::from_secs(5),
+                max_connections: 100,
             },
             server: ServerConfig {
                 host: "127.0.0.1".to_string(),
