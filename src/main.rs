@@ -1,6 +1,6 @@
 mod cli;
 mod config;
-mod web_server;
+mod services;
 
 use crate::config::Config;
 use crate::services::web_server::{WebServerStrategy, AxumWebServer, WebServerContext};
