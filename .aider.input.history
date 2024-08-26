@@ -1542,3 +1542,14 @@
 +}
 +```
 +Please implement these changes, ensuring that the code follows the project's coding standards and fits within the existing architecture. After making these changes, we can move on to implementing the AxumWebServer struct and its methods in more detail.
+
+# 2024-08-25 23:05:55.677392
++I think we need to update our configuration files to reflect the changes we made in config
+
+# 2024-08-25 23:06:42.896432
++I think we need to update our configuration files to reflect the changes we made in config error[E0063]: missing field `server` in initializer of `config::Config`
++  --> src/cli/db_commands.rs:49:22
++   |
++49 |         let config = Config {
++   |                      ^^^^^^ missing `server`
++

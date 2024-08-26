@@ -83,7 +83,7 @@ mod tests {
     }
 
     #[test]
-    fn test_database_config() {
+    fn test_config() {
         let config = Config {
             version: "1.0.0".to_string(),
             database: DatabaseConfig {
@@ -93,6 +93,10 @@ mod tests {
                 user: "postgres".to_string(),
                 password: "password".to_string(),
             },
+            server: ServerConfig {
+                host: "127.0.0.1".to_string(),
+                port: 8080,
+            },
         };
 
         assert_eq!(config.database.host, "localhost");
@@ -100,5 +104,7 @@ mod tests {
         assert_eq!(config.database.name, "test_db");
         assert_eq!(config.database.user, "postgres");
         assert_eq!(config.database.password, "password");
+        assert_eq!(config.server.host, "127.0.0.1");
+        assert_eq!(config.server.port, 8080);
     }
 }
