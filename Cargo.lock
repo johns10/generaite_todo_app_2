@@ -858,6 +858,7 @@ name = "gen_todo"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "async-trait",
  "axum",
  "chrono",
  "clap",
@@ -868,6 +869,7 @@ dependencies = [
  "sea-orm",
  "sea-orm-migration",
  "serde",
+ "thiserror",
  "tokio",
  "tokio-test",
  "uuid",

@@ -9,6 +9,8 @@ pub struct Config {
     pub version: String,
     /// Database configuration.
     pub database: DatabaseConfig,
+    /// Server configuration.
+    pub server: ServerConfig,
 }
 
 /// Database configuration.
@@ -19,6 +21,13 @@ pub struct DatabaseConfig {
     pub name: String,
     pub user: String,
     pub password: String,
+}
+
+/// Server configuration.
+#[derive(Debug, Deserialize)]
+pub struct ServerConfig {
+    pub host: String,
+    pub port: u16,
 }
 
 impl Config {

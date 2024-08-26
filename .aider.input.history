@@ -1455,3 +1455,90 @@
 +test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
 +
 +error: test failed, to rerun pass `--test utils`
+
+# 2024-08-25 23:02:32.214269
++Create a new file src/web_server.rs and set up the basic structure for our web server using the strategy pattern. We'll also update the Cargo.toml file to include necessary dependencies. Please make the following changes:
++
++In src/web_server.rs:
++
++Import necessary dependencies.
++Define a WebServerStrategy trait with an async run method that returns a Result.
++Create a WebServerContext struct that uses the strategy.
++Implement an AxumWebServer struct that implements the WebServerStrategy trait.
++Use the async_trait macro for async trait methods.
++Include basic error handling using thiserror for custom error types.
++
++
++In Cargo.toml:
++
++Add the following dependencies:
++tomlCopyaxum = "0.7"
++async-trait = "0.1"
++thiserror = "1.0"
++
++
++
++Review src/config.rs and update if necessary:
++
++Ensure there's a ServerConfig struct with at least host and port fields.
++If not present, add these fields and update the Config struct accordingly.
++
++
++
++Here's a basic structure for src/web_server.rs:
++```rust
++use async_trait::async_trait;
++use axum::Router;
++use std::net::SocketAddr;
++use thiserror::Error;
++
++use crate::config::Config;
++
++#[derive(Error, Debug)]
++pub enum WebServerError {
++    #[error("Server error: {0}")]
++    ServerError(String),
++}
++
++#[async_trait]
++pub trait WebServerStrategy {
++    async fn run(&self) -> Result<(), WebServerError>;
++}
++
++pub struct WebServerContext<T: WebServerStrategy> {
++    strategy: T,
++}
++
++impl<T: WebServerStrategy> WebServerContext<T> {
++    pub fn new(strategy: T) -> Self {
++        WebServerContext { strategy }
++    }
++
++    pub async fn run(&self) -> Result<(), WebServerError> {
++        self.strategy.run().await
++    }
++}
++
++pub struct AxumWebServer {
++    addr: SocketAddr,
++    router: Router,
++}
++
++impl AxumWebServer {
++    pub fn new(config: &Config) -> Self {
++        // Initialize with config
++        // You'll need to implement this
++        unimplemented!()
++    }
++}
++
++#[async_trait]
++impl WebServerStrategy for AxumWebServer {
++    async fn run(&self) -> Result<(), WebServerError> {
++        // Implement the run method
++        // You'll need to implement this
++        unimplemented!()
++    }
++}
++```
++Please implement these changes, ensuring that the code follows the project's coding standards and fits within the existing architecture. After making these changes, we can move on to implementing the AxumWebServer struct and its methods in more detail.
