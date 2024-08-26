@@ -3,7 +3,7 @@ mod config;
 mod web_server;
 
 use crate::config::Config;
-use crate::web_server::{WebServerStrategy, AxumWebServer, WebServerContext};
+use crate::services::web_server::{WebServerStrategy, AxumWebServer, WebServerContext};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use tracing::{info, error};
 
