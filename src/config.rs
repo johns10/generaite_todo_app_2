@@ -1,9 +1,10 @@
 use config::{Config as ConfigRs, ConfigError, Environment, File};
-use serde::Deserialize;
+use serde::{Deserialize, Deserializer};
 use std::env;
 
 /// Represents the application configuration.
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "snake_case")]
 pub struct Config {
     /// Application version, populated from Cargo.toml.
     pub version: String,
@@ -74,7 +75,7 @@ mod tests {
     #[test]
     fn test_load_config() {
         // Set some environment variables for testing
-        env::set_var("CARGO_DATABASE_HOST", "test_host");
+        env::set_var("CARGO_DATABASE_HOST", "localhost");
         env::set_var("CARGO_DATABASE_PORT", "5432");
 
         let config = Config::load().expect("Failed to load configuration");
@@ -82,6 +83,7 @@ mod tests {
         assert_eq!(config.database.host, "localhost");
         assert_eq!(config.database.port, 5432);
         assert_eq!(config.version, env!("CARGO_PKG_VERSION"));
+        assert_eq!(config.database.connection_timeout, std::time::Duration::from_secs(30));
     }
 
     #[test]

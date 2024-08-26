@@ -7,7 +7,7 @@ name = "todo_app"
 user = "postgres"
 password = "password"
 max_connections = 100
-connection_timeout = 30
+connection_timeout = { secs = 30, nanos = 0 }
 
 [server]
 host = "127.0.0.1"

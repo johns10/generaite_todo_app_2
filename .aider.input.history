@@ -1753,3 +1753,58 @@
 
 # 2024-08-26 00:06:39.297578
 +/run mv src/web_server.rs src/services/web_server.rs
+
+# 2024-08-26 00:20:32.681722
++/drop src/config.rs
+
+# 2024-08-26 00:20:34.842100
++/drop src/main.rs
+
+# 2024-08-26 00:20:38.402109
++/drop src/services/database.rs
+
+# 2024-08-26 00:20:40.828099
++/drop src/services/mod.rs
+
+# 2024-08-26 00:21:18.255098
++Add Sea-ORM dependencies to Cargo.toml. Include sea-orm with the following features: runtime-tokio-rustls, macros, sqlx-postgres. Also add sea-orm-migration.
+
+# 2024-08-26 00:23:21.783860
++Update the DatabaseConfig struct in config.rs to include all necessary fields for Sea-ORM connection. Include fields for max_connections and connection_timeout. Update the config files as well.
+
+# 2024-08-26 00:24:01.713951
++/add src/cli/db_commands.rs
+
+# 2024-08-26 00:24:03.538327
++  --> src/cli/db_commands.rs:51:23
++   |
++51 |             database: DatabaseConfig {
++   |                       ^^^^^^^^^^^^^^ missing `connection_timeout` and `max_connections`
++
+
+# 2024-08-26 00:24:54.660004
++error[E0308]: mismatched types
++  --> src/config.rs:98:37
++   |
++98 |                 connection_timeout: 30,
++   |                                     ^^ expected `Duration`, found integer
++
++error[E0308]: mismatched types
++   --> src/config.rs:112:56
++    |
++112 |         assert_eq!(config.database.connection_timeout, 30);
++    |                                                        ^^ expected `Duration`, found integer
+
+# 2024-08-26 00:25:36.164213
++/add config/default.toml
+
+# 2024-08-26 00:25:39.211180
++/add config/development.toml
+
+# 2024-08-26 00:25:41.986477
++/add config/production.toml
+
+# 2024-08-26 00:25:44.650800
++thread 'config::tests::test_load_config' panicked at src/config.rs:80:37:
++Failed to load configuration: invalid type: integer `30`, expected struct Duration
++note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

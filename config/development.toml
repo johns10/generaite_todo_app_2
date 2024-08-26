@@ -1,7 +1,7 @@
 [database]
 name = "todo_app_dev"
 max_connections = 50
-connection_timeout = 30
+connection_timeout = { secs = 30, nanos = 0 }
 
 [logging]
 level = "debug"

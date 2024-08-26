@@ -4,7 +4,7 @@ name = "todo_app_prod"
 user = "prod_user"
 password = "prod_password"
 max_connections = 200
-connection_timeout = 60
+connection_timeout = { secs = 60, nanos = 0 }
 
 [server]
 host = "0.0.0.0"
