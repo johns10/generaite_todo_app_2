@@ -55,6 +55,10 @@ mod tests {
                 user: "postgres".to_string(),
                 password: "password".to_string(),
             },
+            server: ServerConfig {
+                host: "127.0.0.1".to_string(),
+                port: 8080,
+            },
         };
 
         // Run the create_database function
