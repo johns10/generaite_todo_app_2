@@ -1571,3 +1571,93 @@
 +58 |             server: ServerConfig {
 +   |                     ^^^^^^^^^^^^ not found in this scope
 +   |
+
+# 2024-08-25 23:20:59.035039
++
++Do not change any of the documentation/markdown files unless specifically asked to do so.
++Let's implement the AxumWebServer struct and WebServer trait in our Todo application, following the latest Axum documentation and our project's architecture. We'll focus on setting up the basic structure with logging, without implementing specific routes or middleware at this time. Please make the following changes:
++
++Update src/web_server.rs:
++
++Import necessary dependencies, including axum::Router and tokio::net::TcpListener.
++Implement the AxumWebServer::new method, using configuration from Config.
++Implement the WebServerStrategy trait for AxumWebServer, including the run method.
++Add basic logging using the tracing crate.
++
++
++Update Cargo.toml:
++
++Add or update the following dependencies:
++tomlCopyaxum = "0.7"
++tokio = { version = "1.0", features = ["full"] }
++tracing = "0.1"
++tracing-subscriber = "0.3"
++
++
++
++Update src/main.rs:
++
++Initialize the tracing subscriber for logging.
++Create an instance of AxumWebServer and run it.
++
++
++Ensure src/config.rs has the necessary configuration for the server.
++
++Here's a basic structure for the changes in src/web_server.rs:
++rustCopyuse async_trait::async_trait;
++use axum::Router;
++use std::net::SocketAddr;
++use thiserror::Error;
++use tracing::{info, error};
++use tokio::net::TcpListener;
++
++use crate::config::Config;
++
++// ... (keep existing WebServerError, WebServerStrategy, and WebServerContext)
++
++impl AxumWebServer {
++    pub fn new(config: &Config) -> Self {
++        let addr = SocketAddr::new(config.server.host.parse().unwrap(), config.server.port);
++        let router = Router::new();
++        AxumWebServer { addr, router }
++    }
++}
++
++#[async_trait]
++impl WebServerStrategy for AxumWebServer {
++    async fn run(&self) -> Result<(), WebServerError> {
++        info!("Starting server on {}", self.addr);
++        let listener = TcpListener::bind(&self.addr).await.map_err(|e| {
++            error!("Failed to bind to address: {}", e);
++            WebServerError::ServerError(e.to_string())
++        })?;
++
++        axum::serve(listener, self.router.clone()).await.map_err(|e| {
++            error!("Server error: {}", e);
++            WebServerError::ServerError(e.to_string())
++        })
++    }
++}
++In src/main.rs, add:
++rustCopyuse tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
++
++#[tokio::main]
++async fn main() -> Result<(), Box<dyn std::error::Error>> {
++    tracing_subscriber::registry()
++        .with(tracing_subscriber::EnvFilter::new(
++            std::env::var("RUST_LOG").unwrap_or_else(|_| "info".into()),
++        ))
++        .with(tracing_subscriber::fmt::layer())
++        .init();
++
++    let config = Config::load()?;
++    let server = AxumWebServer::new(&config);
++    let context = WebServerContext::new(server);
++    context.run().await?;
++
++    Ok(())
++}
++Please implement these changes, ensuring that the code follows the project's coding standards and fits within the existing architecture. This implementation now uses the correct Axum 0.7 approach with axum::serve and TcpListener.
+
+# 2024-08-25 23:21:49.295258
++/add src/cli/db_commands.rs

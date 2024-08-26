@@ -2,6 +2,8 @@ use async_trait::async_trait;
 use axum::Router;
 use std::net::SocketAddr;
 use thiserror::Error;
+use tracing::{info, error};
+use tokio::net::TcpListener;
 
 use crate::config::Config;
 
@@ -66,15 +68,24 @@ impl AxumWebServer {
     ///
     /// Returns a new `AxumWebServer` instance.
     pub fn new(config: &Config) -> Self {
-        // TODO: Implement this method
-        unimplemented!("AxumWebServer::new() is not yet implemented")
+        let addr = SocketAddr::new(config.server.host.parse().unwrap(), config.server.port);
+        let router = Router::new();
+        AxumWebServer { addr, router }
     }
 }
 
 #[async_trait]
 impl WebServerStrategy for AxumWebServer {
     async fn run(&self) -> Result<(), WebServerError> {
-        // TODO: Implement the run method
-        unimplemented!("AxumWebServer::run() is not yet implemented")
+        info!("Starting server on {}", self.addr);
+        let listener = TcpListener::bind(&self.addr).await.map_err(|e| {
+            error!("Failed to bind to address: {}", e);
+            WebServerError::ServerError(e.to_string())
+        })?;
+
+        axum::serve(listener, self.router.clone()).await.map_err(|e| {
+            error!("Server error: {}", e);
+            WebServerError::ServerError(e.to_string())
+        })
     }
 }

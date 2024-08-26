@@ -14,8 +14,8 @@ serde = { version = "1.0.208", features = ["derive"] }
 tokio = { version = "1.39.3", features = ["full"] }
 uuid = "1.10.0"
 postgres = "0.19.7"
-log = "0.4.20"
-env_logger = "0.10.2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 anyhow = "1.0.79"
 async-trait = "0.1"
 thiserror = "1.0"
