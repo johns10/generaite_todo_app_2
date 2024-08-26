@@ -22,7 +22,7 @@ pub struct DatabaseConfig {
     pub user: String,
     pub password: String,
     pub max_connections: u32,
-    pub connection_timeout: u64,
+    pub connection_timeout: std::time::Duration,
 }
 
 /// Server configuration.
