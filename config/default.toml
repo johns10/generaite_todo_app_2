@@ -6,6 +6,8 @@ port = 5432
 name = "todo_app"
 user = "postgres"
 password = "password"
+max_connections = 100
+connection_timeout = 30
 
 [server]
 host = "127.0.0.1"

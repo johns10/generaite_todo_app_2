@@ -1,5 +1,7 @@
 [database]
 name = "todo_app_test"
+max_connections = 10
+connection_timeout = 10
 
 [logging]
 level = "debug"

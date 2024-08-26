@@ -21,6 +21,8 @@ pub struct DatabaseConfig {
     pub name: String,
     pub user: String,
     pub password: String,
+    pub max_connections: u32,
+    pub connection_timeout: u64,
 }
 
 /// Server configuration.
@@ -92,6 +94,8 @@ mod tests {
                 name: "test_db".to_string(),
                 user: "postgres".to_string(),
                 password: "password".to_string(),
+                max_connections: 100,
+                connection_timeout: 30,
             },
             server: ServerConfig {
                 host: "127.0.0.1".to_string(),
@@ -104,6 +108,8 @@ mod tests {
         assert_eq!(config.database.name, "test_db");
         assert_eq!(config.database.user, "postgres");
         assert_eq!(config.database.password, "password");
+        assert_eq!(config.database.max_connections, 100);
+        assert_eq!(config.database.connection_timeout, 30);
         assert_eq!(config.server.host, "127.0.0.1");
         assert_eq!(config.server.port, 8080);
     }
