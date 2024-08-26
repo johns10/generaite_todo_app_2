@@ -36,7 +36,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn should_start_web_server(matches: &clap::ArgMatches) -> bool {
-    matches.is_present("server")
+    matches.contains_id("server")
 }
 
 async fn run_web_server(config: &Config) -> Result<(), Box<dyn std::error::Error>> {

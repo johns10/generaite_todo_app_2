@@ -1,4 +1,4 @@
-use clap::{Command, ArgMatches};
+use clap::{Command, ArgMatches, Arg, ArgAction};
 use crate::config::Config;
 use crate::cli::db_commands::create_database;
 
@@ -8,8 +8,12 @@ mod db_commands;
 pub fn build_cli() -> Command {
     Command::new("gen_todo")
         .about("A Todo application")
-        .subcommand_required(true)
-        .arg_required_else_help(true)
+        .arg(
+            Arg::new("server")
+                .long("server")
+                .help("Start the web server")
+                .action(ArgAction::SetTrue)
+        )
         .subcommand(
             Command::new("version")
                 .about("Prints the application version")
