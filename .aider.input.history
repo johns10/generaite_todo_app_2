@@ -1661,3 +1661,69 @@
 
 # 2024-08-25 23:21:49.295258
 +/add src/cli/db_commands.rs
+
+# 2024-08-25 23:36:55.199268
++
++Update src/main.rs to use the new WebServer trait while maintaining the existing CLI functionality. Please make the following changes:
++
++In src/main.rs:
++
++Import the necessary types from src/web_server.rs, including the WebServerStrategy trait and the AxumWebServer struct.
++Keep the existing CLI functionality intact.
++Add a new async function to handle the web server setup and execution.
++In the main function, after handling CLI commands, check if a web server should be started and call the new async function if needed.
++
++
++Ensure that the changes follow the architecture outlined in design/architecture.md and adhere to the coding standards in design/code_standards.md.
++Use any relevant Axum or Tokio features mentioned in design/tech_stack.md.
++Review src/config.rs to ensure all necessary configuration parameters are being passed to the web server.
++
++Here's a basic structure for the changes in src/main.rs:
++rustCopymod cli;
++mod config;
++mod web_server;
++
++use crate::config::Config;
++use crate::web_server::{WebServerStrategy, AxumWebServer, WebServerContext};
++
++#[tokio::main]
++async fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let config = Config::load()?;
++    let cli = cli::build_cli();
++    let matches = cli.get_matches();
++
++    // Handle CLI commands
++    cli::run_cli(&matches, &config)?;
++
++    // Check if we should start the web server
++    if should_start_web_server(&matches) {
++        run_web_server(&config).await?;
++    }
++
++    Ok(())
++}
++
++fn should_start_web_server(matches: &clap::ArgMatches) -> bool {
++    // Implement logic to determine if the web server should be started
++    // based on CLI arguments or configuration
++    true // For now, always start the server
++}
++
++async fn run_web_server(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
++    let server = AxumWebServer::new(config);
++    let context = WebServerContext::new(server);
++    context.run().await?;
++    Ok(())
++}
++Please implement these changes, ensuring that:
++
++The existing CLI functionality remains intact and works alongside the web server.
++The web server is only started when appropriate (you may need to add a CLI flag or configuration option for this).
++The code follows the project's architecture and coding standards.
++Any relevant Axum or Tokio features from the tech stack are utilized.
++All necessary configuration parameters are correctly passed to the web server.
++
++After making these changes, we can move on to implementing specific routes and more advanced features in subsequent tasks.
+
+# 2024-08-25 23:38:28.564046
++/undo
