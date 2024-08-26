@@ -1553,3 +1553,21 @@
 +49 |         let config = Config {
 +   |                      ^^^^^^ missing `server`
 +
+
+# 2024-08-25 23:07:41.898092
++/add src/cli/db_commands.rs
+
+# 2024-08-25 23:07:50.296729
++We also missed something in db_commands error[E0063]: missing field `server` in initializer of `config::Config`
++  --> src/cli/db_commands.rs:49:22
++   |
++49 |         let config = Config {
++   |   
+
+# 2024-08-25 23:08:33.349519
++error[E0422]: cannot find struct, variant or union type `ServerConfig` in this scope
++  --> src/cli/db_commands.rs:58:21
++   |
++58 |             server: ServerConfig {
++   |                     ^^^^^^^^^^^^ not found in this scope
++   |

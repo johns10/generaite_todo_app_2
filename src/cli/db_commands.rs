@@ -1,4 +1,4 @@
-use crate::config::Config;
+use crate::config::{Config, DatabaseConfig, ServerConfig};
 use postgres::{Client, NoTls};
 use log::info;
 
