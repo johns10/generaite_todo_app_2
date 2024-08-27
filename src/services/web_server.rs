@@ -6,6 +6,7 @@ use tracing::{info, error};
 use tokio::net::TcpListener;
 
 use crate::config::Config;
+use crate::services::database::DatabasePool;
 
 /// Represents errors that can occur in the web server.
 #[derive(Error, Debug)]
@@ -55,6 +56,7 @@ impl<T: WebServerStrategy> WebServerContext<T> {
 pub struct AxumWebServer {
     addr: SocketAddr,
     router: Router,
+    db_pool: DatabasePool,
 }
 
 impl AxumWebServer {
@@ -63,14 +65,15 @@ impl AxumWebServer {
     /// # Arguments
     ///
     /// * `config` - The application configuration.
+    /// * `db_pool` - The database connection pool.
     ///
     /// # Returns
     ///
     /// Returns a new `AxumWebServer` instance.
-    pub fn new(config: &Config) -> Self {
+    pub fn new(config: &Config, db_pool: DatabasePool) -> Self {
         let addr = SocketAddr::new(config.server.host.parse().unwrap(), config.server.port);
         let router = Router::new();
-        AxumWebServer { addr, router }
+        AxumWebServer { addr, router, db_pool }
     }
 }
 

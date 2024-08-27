@@ -3,6 +3,7 @@ mod config;
 mod services;
 
 use crate::config::Config;
+use crate::services::database::DatabasePool;
 use crate::services::web_server::{WebServerStrategy, AxumWebServer, WebServerContext};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use tracing::{info, error};
@@ -26,8 +27,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Check if we should start the web server
     if should_start_web_server(&matches) {
+        info!("Initializing database pool");
+        let db_pool = DatabasePool::new(&config.database).await?;
+
         info!("Starting web server");
-        run_web_server(&config).await?;
+        run_web_server(&config, db_pool).await?;
     } else {
         info!("Web server not started (use --server flag to start)");
     }
@@ -39,8 +43,8 @@ fn should_start_web_server(matches: &clap::ArgMatches) -> bool {
     matches.contains_id("server")
 }
 
-async fn run_web_server(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
-    let server = AxumWebServer::new(config);
+async fn run_web_server(config: &Config, db_pool: DatabasePool) -> Result<(), Box<dyn std::error::Error>> {
+    let server = AxumWebServer::new(config, db_pool);
     let context = WebServerContext::new(server);
     context.run().await.map_err(|e| {
         error!("Web server error: {}", e);

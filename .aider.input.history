@@ -1840,3 +1840,64 @@
 +
 +Ensure the implementation is modular, follows Rust best practices, and is consistent with the existing codebase. The Repository trait should be flexible enough to be implemented for different model types in the future.
 +
+
+# 2024-08-27 07:39:41.437199
++
++Update src/main.rs to initialize the DatabasePool, create the WebServer with the pool, and start the server with the router, while maintaining existing CLI functionality. Make any necessary updates to other files.
++
++Specific requirements:
++
++1. In src/main.rs:
++   - Import necessary modules and types from services::database and services::web_server.
++   - After handling CLI commands, check if we should start the web server (use the existing `should_start_web_server` function).
++   - If starting the server, initialize the DatabasePool using the config.
++   - Create the WebServer with the DatabasePool.
++   - Start the server using the router from WebServer.
++
++2. Ensure the existing CLI functionality is preserved.
++
++3. Use the configuration from src/config.rs for database and server settings.
++
++4. Update Cargo.toml if any new dependencies are required.
++
++5. Make sure the changes adhere to the code standards in code_standards.md, particularly regarding error handling and logging.
++
++6. Use existing logging mechanisms for any new log messages.
++
++Please refer to the following documentation:
++- design/architecture.md for overall application structure
++- design/code_standards.md for coding standards
++- tech_stack.md for information about the tech stack
++
++Use the following Axum documentation for implementation details:
++https://docs.rs/axum/latest/axum/
++
++Ensure the implementation is modular, follows Rust best practices, and is consistent with the existing codebase. The main function should cleanly separate CLI functionality from server initialization and startup.
+
+# 2024-08-27 07:40:50.879065
++Update src/main.rs to initialize the DatabasePool, create the WebServer with the pool, and start the server with the router, while maintaining existing CLI functionality. Make any necessary updates to other files.
++
++Specific requirements:
++
++1. In src/main.rs:
++   - Import necessary modules and types from services::database and services::web_server.
++   - After handling CLI commands, check if we should start the web server (use the existing `should_start_web_server` function).
++   - If starting the server, initialize the DatabasePool using the config.
++   - Create the WebServer with the DatabasePool.
++   - Start the server using the router from WebServer.
++
++2. Ensure the existing CLI functionality is preserved.
++
++3. Use the configuration from src/config.rs for database and server settings.
++
++4. Update Cargo.toml if any new dependencies are required.
++
++5. Make sure the changes adhere to the code standards in code_standards.md, particularly regarding error handling and logging.
++
++6. Use existing logging mechanisms for any new log messages.
++
++
++Use the following Axum documentation for implementation details:
++https://docs.rs/axum/latest/axum/
++
++Ensure the implementation is modular, follows Rust best practices, and is consistent with the existing codebase. The main function should cleanly separate CLI functionality from server initialization and startup.
