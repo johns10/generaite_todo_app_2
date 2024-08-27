@@ -1808,3 +1808,35 @@
 +thread 'config::tests::test_load_config' panicked at src/config.rs:80:37:
 +Failed to load configuration: invalid type: integer `30`, expected struct Duration
 +note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+# 2024-08-27 07:27:36.868206
++
++Create a new file src/services/repositories/mod.rs and define the Repository trait with CRUD methods. Also, define the RepositoryContext struct. Update any other necessary files.
++
++Specific requirements:
++
++1. Create a generic Repository trait with the following methods:
++   - find_by_id
++   - find_all
++   - create
++   - update
++   - delete
++
++2. Make the Repository trait generic over the model type and an associated error type.
++
++3. Use async methods with the async_trait macro.
++
++4. Define a RepositoryContext struct that holds an Arc<DatabaseConnection>.
++
++5. Add comprehensive documentation comments for the trait and struct, explaining their purpose and usage. Keep these comments separate from the implementation.
++
++6. Ensure the implementation adheres to the code standards in code_standards.md, particularly regarding modularity and naming conventions.
++
++7. Update Cargo.toml to include necessary dependencies (async-trait, sea-orm, etc.).
++
++Use the following Rust documentation for implementation details:
++https://doc.rust-lang.org/book/ch10-02-traits.html
++https://docs.rs/async-trait/latest/async_trait/
++
++Ensure the implementation is modular, follows Rust best practices, and is consistent with the existing codebase. The Repository trait should be flexible enough to be implemented for different model types in the future.
++
