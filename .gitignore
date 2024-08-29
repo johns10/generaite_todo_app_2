@@ -41,6 +41,3 @@ coverage/
 .aider.tags*
 playwright
 .aider*
-
-# Documentation
-/documentation/*
